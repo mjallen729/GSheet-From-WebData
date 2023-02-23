@@ -15,7 +15,7 @@ def fetch(airbnb_wishlist= default_link, write= True) -> pd.DataFrame:
 	driver.implicitly_wait(20)
 
 	df = pd.DataFrame(columns=['Name', 'Location', 'Guests', 'Bedrooms', 'Beds',
-							'Baths', 'Price (Night)', 'Price (Total)', 'Link'])
+							'Baths', 'Price (Night)', 'Price (Total)', 'Link'],)
 
 	parent = driver.find_element(By.XPATH, '//*[@id="FMP-target"]/div[1]/div')
 	children = parent.find_elements(By.XPATH, '*')
@@ -60,7 +60,7 @@ def fetch(airbnb_wishlist= default_link, write= True) -> pd.DataFrame:
 		print('Exporting...')
 
 		df.describe().loc[['count', 'mean', 'min', 'max']].to_csv('./exports/describe.csv')
-		df.to_csv('./exports/available_listings.csv')
+		df.to_csv('./exports/available_listings.csv', index=False)
 
 	return df
 
