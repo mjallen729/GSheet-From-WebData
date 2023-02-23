@@ -1,2 +1,4 @@
 keys/
 service-acct.json
+.ipynb_checkpoints
+.DS_Store
