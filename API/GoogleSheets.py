@@ -17,12 +17,12 @@ class DataObject:
         self.gauth = GoogleAuth()
         self.drive = GoogleDrive(self.gauth)
     
-    def push_data(self, spreadsheet_key, worksheet_name):
+    def push_data(self, spreadsheet_key, worksheet_name, csv_to_read= './exports/available_listings.csv'):
         workbook = self.gc.open_by_key(spreadsheet_key)
         sheet = workbook.worksheet(worksheet_name)
 
-        df = pd.read_csv('./exports/available_listings.csv')
-        df = df.drop(df.columns[0], axis=1)
+        df = pd.read_csv(csv_to_read)
+        # df = df.drop(df.columns[0], axis=1)
 
         try:
             set_with_dataframe(worksheet= sheet, dataframe= df, include_index= False,
