@@ -11,7 +11,7 @@ scopes = ['https://www.googleapis.com/auth/spreadsheets',
 
 class DataObject:
     def __init__(self) -> None:
-        self.cred = Credentials.from_service_account_file('../keys/service-acct.json',
+        self.cred = Credentials.from_service_account_file('./keys/service-acct.json',
                                                         scopes= scopes)
         self.gc = gspread.authorize(self.cred)
         self.gauth = GoogleAuth()
@@ -21,7 +21,7 @@ class DataObject:
         workbook = self.gc.open_by_key(spreadsheet_key)
         sheet = workbook.worksheet(worksheet_name)
 
-        df = pd.read_csv('../exports/available_listings.csv')
+        df = pd.read_csv('./exports/available_listings.csv')
         df = df.drop(df.columns[0], axis=1)
 
         try:
@@ -39,4 +39,4 @@ class DataObject:
 
 if __name__ == '__main__':
     test = DataObject()
-    test.push_data('1vVn2PuJybnMyO81SA4e1tVUGmPeSoRRd1LEbmU6jydk', 'remote')
+    test.push_data('1vVn2PuJybnMyO81SA4e1tVUGmPeSoRRd1LEbmU6jydk', 'available_listings')
