@@ -31,7 +31,7 @@ def fetch(airbnb_wishlist= default_link):
 			data = driver.find_element(By.XPATH, xpath).text
 		except Exception as e:
 			print(e)
-			return 'error'
+			return ''
 		
 		return data.strip() if data else ''
 

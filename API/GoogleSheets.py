@@ -18,17 +18,24 @@ class DataObject:
         self.drive = GoogleDrive(self.gauth)
     
     def push_data(self, spreadsheet_key, worksheet_name):
-        sheet = self.gc.open_by_key(spreadsheet_key)
-        notebook = sheet.worksheet(worksheet_name)
+        workbook = self.gc.open_by_key(spreadsheet_key)
+        sheet = workbook.worksheet(worksheet_name)
 
         df = pd.read_csv('../exports/available_listings.csv')
         df = df.drop(df.columns[0], axis=1)
-        set_with_dataframe(worksheet= notebook, dataframe= df, include_index= False,
-                           include_column_header= True, resize= True)
+
+        try:
+            set_with_dataframe(worksheet= sheet, dataframe= df, include_index= False,
+                            include_column_header= True, resize= True)
+            
+        except Exception as e:
+            print(e)
         
-        
-        df2 = get_as_dataframe(notebook)
-        print(df2)
+    def pull_data(self, spreadsheet_key, worksheet_name) -> pd.DataFrame:
+        workbook = self.gc.open_by_key(spreadsheet_key)
+        sheet = workbook.worksheet(worksheet_name)
+
+        return get_as_dataframe(sheet)
 
 if __name__ == '__main__':
     test = DataObject()
