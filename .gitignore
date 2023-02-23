@@ -6,3 +6,5 @@ Main.ipynb
 Crawler.ipynb
 API/__pycache__
 __pycache__
+exports/available_listings.csv
+exports/describe.csv
