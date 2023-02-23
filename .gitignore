@@ -4,3 +4,5 @@ keys/service-acct.json
 env/
 Main.ipynb
 Crawler.ipynb
+API/__pycache__
+__pycache__
