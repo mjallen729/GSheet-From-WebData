@@ -5,7 +5,7 @@ import pandas as pd
 
 default_link = 'https://www.airbnb.com/wishlists/v/1250433647?s=67&unique_share_id=26a5887d-15af-4bc3-92ef-fa74ea9da81f'
 
-def fetch(airbnb_wishlist= default_link):
+def fetch(airbnb_wishlist= default_link, write= True) -> pd.DataFrame:
 	print('Configuring driver...')
 
 	ops = Options()
@@ -55,11 +55,15 @@ def fetch(airbnb_wishlist= default_link):
 		data.append(link)
 
 		df.loc[len(df)] = data  # append to dataframe
+		break
 
-	print('Exporting...')
+	if write:
+		print('Exporting...')
 
-	df.describe().loc[['count', 'mean', 'min', 'max']].to_csv('./exports/describe.csv')
-	df.to_csv('./exports/available_listings.csv')
+		df.describe().loc[['count', 'mean', 'min', 'max']].to_csv('./exports/describe.csv')
+		df.to_csv('./exports/available_listings.csv')
+
+	return df
 
 if __name__ == '__main__':
 	fetch()
