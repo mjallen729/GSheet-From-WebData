@@ -55,7 +55,6 @@ def fetch(airbnb_wishlist= default_link, write= True) -> pd.DataFrame:
 		data.append(link)
 
 		df.loc[len(df)] = data  # append to dataframe
-		break
 
 	if write:
 		print('Exporting...')
