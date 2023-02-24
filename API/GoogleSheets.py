@@ -21,7 +21,7 @@ class DataObject:
         workbook = self.gc.open_by_key(spreadsheet_key)
         sheet = workbook.worksheet(worksheet_name)
 
-        df = pd.read_csv(csv_to_push)
+        df = pd.read_csv(csv_to_push, index_col=False)
         # df = df.drop(df.columns[0], axis=1)
 
         try:
@@ -29,7 +29,7 @@ class DataObject:
                             include_column_header= True, resize= True)
             
             sheet.columns_auto_resize(0, len(df.columns))
-            sheet.resize(rows=sheet.row_count + 15)
+            sheet.resize(rows=len(df) + 15)
 
         except Exception as e:
             print(f'Error setting and formatting: {e}')
@@ -38,7 +38,9 @@ class DataObject:
         workbook = self.gc.open_by_key(spreadsheet_key)
         sheet = workbook.worksheet(worksheet_name)
 
-        return get_as_dataframe(sheet)
+        df = get_as_dataframe(sheet)
+        df = df.iloc[:-15]
+        print(len(df))
 
 if __name__ == '__main__':
     test = DataObject()
