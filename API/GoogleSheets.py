@@ -11,7 +11,7 @@ scopes = ['https://www.googleapis.com/auth/spreadsheets',
 
 class DataObject:
     def __init__(self) -> None:
-        self.cred = Credentials.from_service_account_file('./keys/service-acct.json',
+        self.cred = Credentials.from_service_account_file('./keys/credentials.json',
                                                         scopes= scopes)
         self.gc = gspread.authorize(self.cred)
         self.gauth = GoogleAuth()
@@ -44,5 +44,5 @@ class DataObject:
 
 if __name__ == '__main__':
     test = DataObject()
-    a = test.push_data('1vVn2PuJybnMyO81SA4e1tVUGmPeSoRRd1LEbmU6jydk', 'remote')
+    a = test.pull_data('1vVn2PuJybnMyO81SA4e1tVUGmPeSoRRd1LEbmU6jydk', 'available_listings')
     print(a)
