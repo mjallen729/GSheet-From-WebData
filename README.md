@@ -18,3 +18,5 @@ Change `workbook` to the name of your workbook.
 Finally, set `wishlist_link` to a link to your AirBNB Wishlist.
 
 Now you're good to go-- just run `main.py`
+
+Run `main.py` any time you want to update the spreadsheet with information on the AirBNBs you have saved in the wishlist. I haven't implemented a scheduler yet to do it automatically every certain period of time. If a property is unavailable for the dates you selected, it will be removed from the next update of your spreadsheet.
