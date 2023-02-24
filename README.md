@@ -1,5 +1,5 @@
 # Vacation-Planner
-Using google sheets API, Pandas, and Selenium to create auto-updating spreadsheet with AirBNB rental data.
+Using google sheets API, Pandas, and Selenium to create auto-updating spreadsheet with AirBNB rental data (and more data to come once more webscrapers are implemented).
 
 ## Installation
 `git clone` the repo and `cd` to the directory.
