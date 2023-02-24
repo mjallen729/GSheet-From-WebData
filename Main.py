@@ -24,5 +24,5 @@ def check_for_updates(spreadsheet, workbook_name):
         dao.push_data(spreadsheet, workbook_name)
 
 spreadsheet = '1vVn2PuJybnMyO81SA4e1tVUGmPeSoRRd1LEbmU6jydk'
-workbook = 'remote'
+workbook = 'available_listings'
 check_for_updates(spreadsheet, workbook)
