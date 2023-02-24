@@ -39,9 +39,10 @@ class DataObject:
         sheet = workbook.worksheet(worksheet_name)
 
         df = get_as_dataframe(sheet)
-        df = df.iloc[:-15]
-        print(len(df))
+        df = df.iloc[:-14]
+        return df
 
 if __name__ == '__main__':
     test = DataObject()
-    test.push_data('1vVn2PuJybnMyO81SA4e1tVUGmPeSoRRd1LEbmU6jydk', 'remote')
+    a = test.push_data('1vVn2PuJybnMyO81SA4e1tVUGmPeSoRRd1LEbmU6jydk', 'remote')
+    print(a)
