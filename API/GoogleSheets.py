@@ -28,6 +28,10 @@ class DataObject:
             set_with_dataframe(worksheet= sheet, dataframe= df, include_index= False,
                             include_column_header= True, resize= True)
             
+            sheet.columns_auto_resize(0, len(df.columns))
+            sheet.resize(rows=sheet.row_count + 15)
+            
+            
         except Exception as e:
             print(e)
         
@@ -39,4 +43,4 @@ class DataObject:
 
 if __name__ == '__main__':
     test = DataObject()
-    test.push_data('1vVn2PuJybnMyO81SA4e1tVUGmPeSoRRd1LEbmU6jydk', 'available_listings')
+    test.push_data('1vVn2PuJybnMyO81SA4e1tVUGmPeSoRRd1LEbmU6jydk', 'remote')
