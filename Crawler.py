@@ -63,4 +63,5 @@ def fetch(airbnb_wishlist, write= True) -> pd.DataFrame:
 	return df
 
 if __name__ == '__main__':
-	fetch()
+	wishlist_link = 'https://www.airbnb.com/wishlists/v/1250433647?s=67&unique_share_id=26a5887d-15af-4bc3-92ef-fa74ea9da81f'
+	fetch(wishlist_link)
