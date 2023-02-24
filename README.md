@@ -1,4 +1,4 @@
-# Web Data to Google Sheet
+# Google Sheet from Web Data
 Using google sheets API, Pandas, and Selenium to create auto-updating spreadsheet with AirBNB rental data (and more once additional webscrapers are implemented).
 
 ## Installation
