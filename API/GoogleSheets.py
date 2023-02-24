@@ -31,7 +31,6 @@ class DataObject:
             sheet.columns_auto_resize(0, len(df.columns))
             sheet.resize(rows=sheet.row_count + 15)
             
-            
         except Exception as e:
             print(e)
         
