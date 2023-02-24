@@ -22,7 +22,20 @@ class DataObject:
         sheet = workbook.worksheet(worksheet_name)
 
         df = pd.read_csv(csv_to_push, index_col=False)
-        # df = df.drop(df.columns[0], axis=1)
+        num_missing = df.isnull().sum()
+
+        for i in list(num_missing):
+            if i > float(0):
+                print('Found missing values in csv:')
+                missing = {df.columns[i]:num_missing[i] for i in range(len(df.columns))}
+                print(missing)
+                proceed = input('\nDo you wish to prodeed? (y/n)')
+
+                if proceed == 'y':
+                    break
+                else:
+                    print('Operation canceled.')
+                    return
 
         try:
             set_with_dataframe(worksheet= sheet, dataframe= df, include_index= False,
@@ -44,5 +57,5 @@ class DataObject:
 
 if __name__ == '__main__':
     test = DataObject()
-    a = test.pull_data('1vVn2PuJybnMyO81SA4e1tVUGmPeSoRRd1LEbmU6jydk', 'available_listings')
-    print(a)
+    a = test.push_data('1vVn2PuJybnMyO81SA4e1tVUGmPeSoRRd1LEbmU6jydk', 'available_listings')
+    print(a if a else '')
