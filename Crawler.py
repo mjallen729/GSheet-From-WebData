@@ -3,9 +3,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import pandas as pd
 
-default_link = 'https://www.airbnb.com/wishlists/v/1250433647?s=67&unique_share_id=26a5887d-15af-4bc3-92ef-fa74ea9da81f'
-
-def fetch(airbnb_wishlist= default_link, write= True) -> pd.DataFrame:
+def fetch(airbnb_wishlist, write= True) -> pd.DataFrame:
 	print('Configuring driver...')
 
 	ops = Options()
