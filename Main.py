@@ -1,4 +1,4 @@
-import Crawler
+from WebScrapers import AirBNBWishlist
 from API import GoogleSheets
 import pandas as pd
 
@@ -7,7 +7,7 @@ def check_for_updates(spreadsheet, workbook_name, link):
     dao = GoogleSheets.DataObject()
 
     local_data = dao.pull_data(spreadsheet, workbook_name)  # data from Spreadsheet
-    server_data = Crawler.fetch(link, write= True)  # data from AirBNB server
+    server_data = AirBNBWishlist.fetch(link, write= True)  # data from AirBNB server
 
     try:
         diff = len(local_data.compare(server_data))
