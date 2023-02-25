@@ -20,15 +20,15 @@ class DataObject:
     def push_data(self, spreadsheet_key, worksheet_name, csv_to_push= './exports/available_listings.csv'):
         workbook = self.gc.open_by_key(spreadsheet_key)
 
+        df = pd.read_csv(csv_to_push, index_col=False)
+        num_missing = df.isnull().sum()
+
         try:
             sheet = workbook.worksheet(worksheet_name)
 
         except:
             # create the worksheet
-            sheet = workbook.add_worksheet(worksheet_name)
-
-        df = pd.read_csv(csv_to_push, index_col=False)
-        num_missing = df.isnull().sum()
+            sheet = workbook.add_worksheet(worksheet_name, len(df), len(df.columns))
 
         for i in list(num_missing):
             if i > float(0):
