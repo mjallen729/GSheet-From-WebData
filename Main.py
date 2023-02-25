@@ -1,13 +1,13 @@
-spreadsheet = ''
-workbook = 'available_listings'
-wishlist_link = 'https://www.airbnb.com/wishlists/v/1250433647?s=67&unique_share_id=26a5887d-15af-4bc3-92ef-fa74ea9da81f'
-
+# Assign these three variables
+spreadsheet = ''  # spreadsheet ID from the URL
+workbook = 'available_listings'  # name of the workbook (ie 'Sheet1')
+wishlist_link = 'https://www.airbnb.com/wishlists/v/1250433647?s=67&unique_share_id=26a5887d-15af-4bc3-92ef-fa74ea9da81f'  # link to your AirBNB wishlist
 
 from WebScrapers import AirBNBWishlist
 from API import GoogleSheets
 import pandas as pd
 
-# Run hourly to check for updates and serve them to the spreadsheet
+# Checks for updates and serves them to the spreadsheet
 def check_for_updates(spreadsheet, workbook_name, link):
     dao = GoogleSheets.DataObject()
 
