@@ -1,3 +1,8 @@
+spreadsheet = '1vVn2PuJybnMyO81SA4e1tVUGmPeSoRRd1LEbmU6jydk'
+workbook = 'available_listings'
+wishlist_link = 'https://www.airbnb.com/wishlists/v/1250433647?s=67&unique_share_id=26a5887d-15af-4bc3-92ef-fa74ea9da81f'
+
+
 from WebScrapers import AirBNBWishlist
 from API import GoogleSheets
 import pandas as pd
@@ -22,7 +27,7 @@ def check_for_updates(spreadsheet, workbook_name, link):
                 changes = pd.read_csv('./exports/changelog.csv')
 
             except:
-                changes = pd.DataFrame(columns=['Listing','Col','Change'])
+                changes = pd.DataFrame(columns=['Listing','Col','Change (Net)'])
 
             print('Logging changes...')
 
@@ -63,11 +68,13 @@ def check_for_updates(spreadsheet, workbook_name, link):
 
     finally:
         dao.push_data(spreadsheet, workbook_name)
-        dao.push_data(spreadsheet,'changes','./exports/changelog.csv')
         dao.push_data(spreadsheet, 'describe', './exports/describe.csv')
 
-spreadsheet = '1vVn2PuJybnMyO81SA4e1tVUGmPeSoRRd1LEbmU6jydk'
-workbook = 'available_listings'
-wishlist_link = 'https://www.airbnb.com/wishlists/v/1250433647?s=67&unique_share_id=26a5887d-15af-4bc3-92ef-fa74ea9da81f'
+        try:
+            open('./exports/changelog.csv')
+            dao.push_data(spreadsheet,'changes','./exports/changelog.csv')
+
+        except:
+            print('No changelog found')
 
 check_for_updates(spreadsheet, workbook, wishlist_link)
