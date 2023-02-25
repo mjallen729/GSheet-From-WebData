@@ -20,7 +20,7 @@ def check_for_updates(spreadsheet, workbook_name, link):
         diff = local_data.compare(server_data)
 
         if len(diff) != 0:
-            print('Value change found!')
+            print('Value change found! [23]')
 
             # log changes from compare
             try:
@@ -62,9 +62,10 @@ def check_for_updates(spreadsheet, workbook_name, link):
 
         else:
             print('No change found.')
+            return
 
     except:
-        print('Structure change found! (error thrown)')
+        print('Structure change found! [67]')
 
     finally:
         dao.push_data(spreadsheet, workbook_name)
@@ -74,7 +75,7 @@ def check_for_updates(spreadsheet, workbook_name, link):
             open('./exports/changelog.csv')
             dao.push_data(spreadsheet,'changes','./exports/changelog.csv')
 
-        except:
-            print('No changelog found')
+        except Exception as e:
+            print('No changelog found!')
 
 check_for_updates(spreadsheet, workbook, wishlist_link)
