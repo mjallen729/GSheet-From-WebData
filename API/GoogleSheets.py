@@ -40,7 +40,7 @@ class DataObject:
                 if proceed == 'y':
                     break
                 else:
-                    print('Operation canceled.')
+                    print('Operation canceled. [43]')
                     return
 
         try:
@@ -51,7 +51,7 @@ class DataObject:
             sheet.resize(rows=len(df) + 15)
 
         except Exception as e:
-            print(f'Error setting and formatting: {e}')
+            print(f'Error setting and formatting: {e} [54]')
         
     def pull_data(self, spreadsheet_key, worksheet_name) -> pd.DataFrame:
         workbook = self.gc.open_by_key(spreadsheet_key)
