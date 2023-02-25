@@ -13,11 +13,11 @@ NOTE: Once you get your service account credentials file, rename it `credentials
 ## Usage
 In `main.py`: 
 
-Set `spreadsheet` to the spreadsheet ID. It'll be in the URL: docs.google.com/spreadsheets/d/{SHEET ID}/...
+- Set `spreadsheet` to the spreadsheet ID. It'll be in the URL: docs.google.com/spreadsheets/d/{SHEET ID}/...
 
-Set `workbook` to the name of your workbook. If the workbook does not exist it will be created.
+- Set `workbook` to the name of your workbook. If the workbook does not exist it will be created.
 
-Finally, set `wishlist_link` to a link to your AirBNB Wishlist.
+- Finally, set `wishlist_link` to a link to your AirBNB Wishlist.
 
 Now you're good to go-- just run `main.py`
 
