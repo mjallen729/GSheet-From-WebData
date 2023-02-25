@@ -10,10 +10,11 @@ def check_for_updates(spreadsheet, workbook_name, link):
     server_data = AirBNBWishlist.fetch(link, write= True)  # data from AirBNB server
 
     try:
-        diff = len(local_data.compare(server_data))
+        diff = local_data.compare(server_data)
 
-        if diff != 0:
-            print('Value change found!')
+        if len(diff) != 0:
+            print('Value change found:')
+            print(diff)
             dao.push_data(spreadsheet, workbook_name)
 
         else:
