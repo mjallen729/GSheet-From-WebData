@@ -11,9 +11,11 @@ You then need to create a service account in Google Cloud, share your Google She
 NOTE: Once you get your service account credentials file, rename it `credentials.json` and put it in the `keys` folder.
 
 ## Usage
-In `main.py`: change `spreadsheet` to the spreadsheet ID. It'll be in the URL: docs.google.com/spreadsheets/d/{SHEET ID}/...
+In `main.py`: 
 
-Change `workbook` to the name of your workbook. If the workbook does not exist it will be created.
+Set `spreadsheet` to the spreadsheet ID. It'll be in the URL: docs.google.com/spreadsheets/d/{SHEET ID}/...
+
+Set `workbook` to the name of your workbook. If the workbook does not exist it will be created.
 
 Finally, set `wishlist_link` to a link to your AirBNB Wishlist.
 
