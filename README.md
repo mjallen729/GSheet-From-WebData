@@ -24,4 +24,4 @@ Run `main.py` any time you want to update the spreadsheet with information from 
 NOTE: If a property is unavailable for the dates you selected, it will automatically be removed the next time you update the spreadsheet.
 
 ## Issues
-If you have an issue while using this tool, open a new issues in the `Issues` tab. Include a copy of the **entire** console output.
+If you have an issue while using this tool, report it in the `Issues` tab. Include a copy of the **entire** console output.
