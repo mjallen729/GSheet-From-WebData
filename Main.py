@@ -19,10 +19,12 @@ def check_for_updates(spreadsheet, workbook_name, link):
 
             # log changes from compare
             try:
-                changes = pd.read_csv('./exports/changelog.csv').drop(0, axis=1)
+                changes = pd.read_csv('./exports/changelog.csv')
 
             except:
                 changes = pd.DataFrame(columns=['Listing','Col','Change'])
+
+            print('Logging changes...')
 
             cols = diff.columns.tolist()
             rows = diff.values.tolist()
@@ -32,7 +34,7 @@ def check_for_updates(spreadsheet, workbook_name, link):
                 for c in range(0, len(cols), 2):
                     # c = (col_name, self/other)
                     data = list()
-                    data.append(listings[l])
+                    data.append(listings[l] + 1)
                     data.append(cols[c][0])
 
                     oldval = rows[l][c]
@@ -46,12 +48,12 @@ def check_for_updates(spreadsheet, workbook_name, link):
                             net = newval - oldval
                             data.append(net)
 
-                            changes.loc[l] = data
+                            changes.loc[len(changes)] = data
 
                     except Exception as e:
                         continue
 
-            changes.to_csv('./exports/changelog.csv')
+            changes.to_csv('./exports/changelog.csv', index=False)
 
         else:
             print('No change found.')
