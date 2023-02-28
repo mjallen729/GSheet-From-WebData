@@ -69,7 +69,7 @@ def check_for_updates(spreadsheet, workbook_name, link):
 
     finally:
         dao.push_data(spreadsheet, workbook_name)
-        dao.push_data(spreadsheet, 'describe', './exports/describe.csv')
+        dao.push_data(spreadsheet, 'describe', './exports/describe_listings.csv')
 
         try:
             open('./exports/changelog.csv')

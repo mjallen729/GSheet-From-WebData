@@ -57,7 +57,7 @@ def fetch(airbnb_wishlist, write= True) -> pd.DataFrame:
 	if write:
 		print('Exporting...')
 
-		df.describe().loc[['count', 'mean', 'min', 'max']].to_csv('./exports/describe.csv')
+		df.describe().loc[['count', 'mean', 'min', 'max']].to_csv('./exports/describe_listings.csv')
 		df.to_csv('./exports/available_listings.csv', index=False)
 
 	return df
