@@ -10,7 +10,7 @@ def fetch(airbnb_wishlist, write= True) -> pd.DataFrame:
 	ops.add_argument('--headless')
 	driver = webdriver.Chrome(options= ops)
 	driver.get(airbnb_wishlist)
-	driver.implicitly_wait(20)
+	driver.implicitly_wait(30)
 
 	df = pd.DataFrame(columns=['Name', 'Location', 'Guests', 'Bedrooms', 'Beds',
 							'Baths', 'Price (Night)', 'Price (Total)', 'Link'],)
